@@ -1,17 +1,9 @@
 <script setup lang="ts">
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
-import { title } from 'process';
 import dropdownLangguage from './navbar/dropdownLangguage.vue';
 import Login from './navbar/login.vue';
 import Register from './navbar/register.vue';
+import sheetNavMobile from './navbar/sheetNavMobile.vue';
+import Navigation from './navbar/navigation.vue';
 
 interface ListItem {
   title: string;
@@ -216,142 +208,20 @@ const componentsHelpCenter: { title: string; url: string }[] = [
   },
 ]
 </script>
+
 <template>
-  <div class="border">
+  <div class="">
     <div class="container py-4 flex items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div>
-          <img class="h-10" src="/public/asset/Logo-01.png" alt="">
+      <div class="flex items-center justify-between gap-3">
+        <div class="">
+          <img class="h-10 hidden xl:block" src="/asset/Logo-01.png" alt="">
+          <img class="h-10 block xl:hidden" src="/asset/Logo_04.png" alt="">
         </div>
-        <div>
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Traders</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div class="w-[400px] p-5 md:w-[500px] lg:w-[800px]">
-                    <ul class="grid grid-cols-2 w-full gap-5">
-                      <li v-for="component in componentsTraders" :key="component.title">
-                        <p class="text-slate-500 text-sm">{{ component.title }}</p>
-                        <ul
-                          :class="component.listOfItem.length > 5 ? 'grid grid-cols-2 space-y-1 text-sm mt-2' : 'mt-2 space-y-1 text-sm text-slate-700'">
-                          <li v-for="item in component.listOfItem" :key="item.url">
-                            <a :href="item.url">{{ item.title }}</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Partner</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div class="w-[600px] flex p-4">
-                    <!-- List for the first componentPartner element -->
-                    <ul class="grid grid-cols-3 w-full gap-5">
-                      <li class="col-span-2 p-3">
-                        <p class="text-slate-500 text-sm">{{ componentsPartner[0].title }}</p>
-                        <ul class="mt-2 space-y-2 text-sm text-slate-700">
-                          <li v-for="item in componentsPartner[0].listOfItem" :key="item.url">
-                            <a :href="item.url">{{ item.title }}</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <!-- List for the rest of componentPartner elements -->
-                    <ul class="w-[400px] gap-3">
-                      <li v-for="(component, index) in componentsPartner" :key="component.title"
-                        :class="index != 0 ? '' : 'hidden'">
-                        <NavigationMenuLink as-child>
-                          <a :href="component.url"
-                            class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                            <div class="text-sm font-medium leading-none">{{ component.title }}</div>
-                            <p class="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              {{ component.description }}
-                            </p>
-                          </a>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Promotion</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div class="w-[550px]">
-                    <ul class="p-4 grid grid-cols-3 gap-3 text-sm">
-                      <li>
-                        <NavigationMenuLink as-child>
-                          <a href="#">Refer a friend</a>
-                        </NavigationMenuLink>
-                      </li>
-                      <li>
-                        <NavigationMenuLink as-child>
-                          <a href="#">30% tradable bonus</a>
-                        </NavigationMenuLink>
-                      </li>
-                      <li>
-                        <NavigationMenuLink as-child>
-                          <a href="#">Seasonal promotions</a>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Company</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div class="w-[550px]">
-                    <ul class="p-4 grid grid-cols-3 gap-3 gap-y-5 text-sm">
-                      <li v-for="component in componentsCompany" :key="component.url">
-                        <NavigationMenuLink as-child>
-                          <a :href="component.url">{{ component.title }}</a>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>EMA Center</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div class="w-[400px] p-5 md:w-[500px] lg:w-[600px]">
-                    <ul class="grid grid-cols-2 w-full gap-5">
-                      <li v-for="component in componentsEMACenter" :key="component.title">
-                        <p class="text-slate-500 text-sm">{{ component.title }}</p>
-                        <ul
-                          :class="component.listOfItem.length > 5 ? 'grid grid-cols-2 space-y-1 text-sm mt-2' : 'mt-2 space-y-1 text-sm text-slate-700'">
-                          <li v-for="item in component.listOfItem" :key="item.url">
-                            <a :href="item.url">{{ item.title }}</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Help Center</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div class="w-[550px]">
-                    <ul class="p-4 grid grid-cols-3 gap-3 gap-y-5 text-sm">
-                      <li v-for="component in componentsHelpCenter" :key="component.url">
-                        <NavigationMenuLink as-child>
-                          <a :href="component.url">{{ component.title }}</a>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+        <div class="hidden xl:flex">
+          <Navigation/>
         </div>
       </div>
-      <div class="flex items-center">
+      <div class="items-center  hidden xl:flex">
         <div>
           <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -363,9 +233,12 @@ const componentsHelpCenter: { title: string; url: string }[] = [
           <dropdownLangguage />
         </div>
         <div class="space-x-2">
-          <Login/>
-          <Register/>
+          <Login />
+          <Register />
         </div>
+      </div>
+      <div class="xl:hidden">
+       <sheetNavMobile/>
       </div>
     </div>
   </div>
