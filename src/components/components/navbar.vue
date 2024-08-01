@@ -211,7 +211,7 @@ const componentsHelpCenter: { title: string; url: string }[] = [
 
 <template>
   <div class="">
-    <div class="container py-4 flex items-center justify-between gap-3">
+    <div class="container max-w-screen-xl py-4 flex items-center justify-between gap-3">
       <div class="flex items-center justify-between gap-3">
         <div class="">
           <img class="h-10 hidden xl:block" src="/asset/Logo-01.png" alt="">
