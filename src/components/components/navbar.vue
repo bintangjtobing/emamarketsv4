@@ -11,8 +11,8 @@ import Navigation from './navbar/navigation.vue';
     <div class="container flex items-center justify-between max-w-screen-xl gap-3 px-4 py-4">
       <div class="flex items-center justify-between gap-3">
         <div class="">
-          <img class="hidden h-10 xl:block" src="/asset/Logo-01.png" alt="">
-          <img class="block h-10 xl:hidden" src="/asset/Logo_04.png" alt="">
+          <a href="/"><img class="hidden h-10 xl:block" src="/asset/Logo-01.png" alt=""></a>
+          <a href="/"><img class="block h-10 xl:hidden" src="/asset/Logo_04.png" alt=""></a>
         </div>
         <div class="hidden xl:flex">
           <Navigation/>

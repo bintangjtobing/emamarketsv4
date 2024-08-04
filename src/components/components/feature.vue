@@ -15,7 +15,7 @@
             </div>
             <div class="hidden grid-cols-3 gap-2 my-10 md:grid md:gap-5">
                 <div class="relative col-span-1 p-5 space-y-2 overflow-hidden text-center bg-white rounded-md">
-                    <h3 class="text-2xl font-bold font-eina-semi-bold">Stabel Spreads</h3>
+                    <h3 class="text-2xl font-bold font-eina-semi-bold">Stable Spreads</h3>
                     <p class="text-sm">We offers consistent bid-ask price diferences for particular asset</p>
                     <div class="flex justify-center">
                         <img class="absolute mx-auto h-72" src="/asset/feature/USPs (1).png" style="object-fit:cover;" >
@@ -47,7 +47,7 @@
                                 <img class="h-20 absolute left-[-20px]" src="/asset/feature/USPs (2).png" style="object-fit:cover;" >
                             </div>
                             <div class="flex items-center col-span-2">
-                                <h3 class="text-xl font-bold font-eina-semi-bold ">Instan Payout</h3>
+                                <h3 class="text-xl font-bold font-eina-semi-bold ">Instant Payout</h3>
                             </div>
                         </div>
                         <div
@@ -77,7 +77,7 @@
             <div class="space-y-2 md:hidden">
                 <div class="grid grid-cols-3 gap-2 mt-5">
                     <div class="relative col-span-2 p-5 space-y-2 overflow-hidden text-center bg-white rounded-md">
-                        <h3 class="text-2xl font-bold font-eina-semi-bold">Stabel Spreads</h3>
+                        <h3 class="text-2xl font-bold font-eina-semi-bold">Stable Spreads</h3>
                         <p class="text-sm">We offers consistent bid-ask price diferences for particular asset</p>
                         <div class="flex justify-center h-24">
                             <img class="absolute mx-auto h-36" src="/asset/feature/USPs (1).png" >
@@ -106,7 +106,7 @@
                             <img class="h-14 absolute left-[-20px]" src="/asset/feature/USPs (2).png" >
                         </div>
                         <div class="flex items-center col-span-2 h-14">
-                            <h3 class="text-sm font-eina-semi-bold">Instan Payout</h3>
+                            <h3 class="text-sm font-eina-semi-bold">Instant Payout</h3>
                         </div>
                     </div>
                     <div
