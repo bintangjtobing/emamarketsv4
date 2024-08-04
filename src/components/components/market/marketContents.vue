@@ -11,7 +11,7 @@ const setActiveTab = (tab: string) => {
 
 <template>
   <Tabs v-model:defaultValue="activeTab" class="max-w-screen-lg bg-white">
-    <TabsList class="w-full flex justify-between bg-white">
+    <TabsList class="w-full flex xl:justify-between bg-white flex-wrap">
       <TabsTrigger 
         v-for="tab in ['popular', 'currencies', 'shares', 'indices', 'commodities', 'etfs']"
         :key="tab"
@@ -22,23 +22,25 @@ const setActiveTab = (tab: string) => {
         {{ tab.charAt(0).toUpperCase() + tab.slice(1) }}
       </TabsTrigger>
     </TabsList>
-    <TabsContent value="popular">
-      Popular content here.
-    </TabsContent>
-    <TabsContent value="currencies">
-      Currencies content here.
-    </TabsContent>
-    <TabsContent value="shares">
-      Shares content here.
-    </TabsContent>
-    <TabsContent value="indices">
-      Indices content here.
-    </TabsContent>
-    <TabsContent value="commodities">
-      Commodities content here.
-    </TabsContent>
-    <TabsContent value="etfs">
-      ETFs content here.
-    </TabsContent>
+    <div class="mt-14">
+      <TabsContent value="popular">
+        Popular content here.
+      </TabsContent>
+      <TabsContent value="currencies">
+        Currencies content here.
+      </TabsContent>
+      <TabsContent value="shares">
+        Shares content here.
+      </TabsContent>
+      <TabsContent value="indices">
+        Indices content here.
+      </TabsContent>
+      <TabsContent value="commodities">
+        Commodities content here.
+      </TabsContent>
+      <TabsContent value="etfs">
+        ETFs content here.
+      </TabsContent>
+    </div>
   </Tabs>
 </template>

@@ -24,9 +24,9 @@ const contentFooter: { title: string; list: string[] }[] = [
 </script>
 
 <template>
-  <section class="p-4">
-    <div class="container max-w-screen-lg mx-auto">
-      <div class="flex justify-between items-center py-4">
+  <section class="xl:p-4">
+    <div class="container max-w-screen-lg mx-auto p-4 xl:p-0">
+      <div class="flex justify-between items-center xl:py-4">
         <div>
           <img class="h-8" src="/asset/Logo-01.png" alt="Logo">
         </div>
@@ -45,7 +45,7 @@ const contentFooter: { title: string; list: string[] }[] = [
           </a>
         </div>
       </div>
-      <div class="grid grid-cols-5 mt-10 gap-8 px-16 mb-16">
+      <div class="grid md:grid-cols-5 grid-cols-2 mt-10 gap-8 xl:px-16 mb-16">
         <div v-for="(content, index) in contentFooter" :key="index">
           <span class="text-[#084EB0] text-xl font-eina-semi-bold">{{ content.title }}</span>
           <ul class="mt-4 space-y-2 text-xs">
@@ -55,7 +55,7 @@ const contentFooter: { title: string; list: string[] }[] = [
           </ul>
         </div>
       </div>
-      <div class="broder border-t-2 mx-16 mb-20 text-slate-500">
+      <div class="broder border-t-2 xl:mx-16 mb-20 text-slate-500 text-sm md:text-base">
         <p class="mt-10 text-justify">Ema Markets and registered in British Virgin Island with Company Registartion: 2006432. Zeal Holdings Limited, as a Group is composed of Multiple Brands 100% (Wholly) owned, authorised and regulated in various jurisdiction through the following Subsidiaries</p>
         <br>
         <p class="text-justify">EMA Markets Registartion Number: 2016/164943/07 and registered address: Dock Road Junction Cnr Dock Road and Stanley Street V&A Waterfront Cape Town 8001, South Africa, Authorised by Financial Services Counduct Authority with FSP (Financial Services Provider) Number: 48248. Traze (Pty) Ltd does not carry out any Principal activities and is not an ODP. Zeal Capital Market (Seychelles) Limited, is regulated as a Securities Dealer by the Financial Services Authority of Seychelles, license number: SD027. its principal office is at: Ofice 1, Unit 3, 1st Floor, Dekk Complex, Plaisance, Mahe, Seychelles.</p>
