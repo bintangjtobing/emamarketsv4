@@ -7,18 +7,18 @@ import Navigation from './navbar/navigation.vue';
 </script>
 
 <template>
-  <div class="">
-    <div class="container max-w-screen-xl py-4 flex items-center justify-between gap-3 px-4">
+  <div class="py-5">
+    <div class="container flex items-center justify-between max-w-screen-xl gap-3 px-4 py-4">
       <div class="flex items-center justify-between gap-3">
         <div class="">
-          <img class="h-10 hidden xl:block" src="/asset/Logo-01.png" alt="">
-          <img class="h-10 block xl:hidden" src="/asset/Logo_04.png" alt="">
+          <img class="hidden h-10 xl:block" src="/asset/Logo-01.png" alt="">
+          <img class="block h-10 xl:hidden" src="/asset/Logo_04.png" alt="">
         </div>
         <div class="hidden xl:flex">
           <Navigation/>
         </div>
       </div>
-      <div class="items-center  hidden xl:flex">
+      <div class="items-center hidden xl:flex">
         <div>
           <svg width="20" height="20" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
