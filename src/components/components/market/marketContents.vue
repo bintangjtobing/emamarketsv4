@@ -21,7 +21,7 @@ const fetchExchangeRate = async () => {
   try {
     const requests = instruments.map(toCurrency => 
       axios.get(
-        `${import.meta.env.VITE_API_ENDPOINT}?function=${rateExchange}&from_currency=${fromCurrency}&to_currency=${toCurrency}&apikey=${import.meta.env.VITE_API_KEY}`
+        `${import.meta.env.VITE_API_ENDPOINT_ALPHA}?function=${rateExchange}&from_currency=${fromCurrency}&to_currency=${toCurrency}&apikey=${import.meta.env.VITE_API_KEY_ALPHA}`
       )
     );
     const responses = await Promise.all(requests);
