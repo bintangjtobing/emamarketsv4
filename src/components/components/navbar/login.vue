@@ -12,6 +12,43 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '@/components/ui/sheet'
+import axios from 'axios'
+import {ref} from 'vue'
+const apiKey = import.meta.env.VITE_API_KEY;
+const endpoint = import.meta.env.VITE_BASE_URL;
+const version = import.meta.env.VITE_VERSION;
+
+const username = ref('');
+const password = ref('');
+
+const login = async () => {
+    try {
+        const response = await axios.post(
+            `${endpoint}/gateway/api/${version}/syntellicore.cfc?method=user_login`, // Use relative path
+            new URLSearchParams({
+                login: username.value,
+                password: password.value
+            }),
+            {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'api_key': apiKey
+                }
+            }
+        )
+        if (response.data.success) {
+            const token = response.data.data[0].authentication_token;
+            localStorage.setItem('access_token', token);
+            username.value='',
+            password.value=''
+            console.log('Authentication token stored:', token);
+        } else {
+            console.error('Login failed:', response.data.info.message);
+        }
+    } catch (error) {
+        console.error('Example Purpose: API Test login failed', error)
+    }
+}
 </script>
 
 <template>
@@ -23,7 +60,7 @@ import {
         </SheetTrigger>
         <SheetContent>
             <SheetHeader>
-                <SheetTitle class="text-center text-2xl font-bold">Masuk dengan</SheetTitle>
+                <SheetTitle class="text-2xl font-bold text-center">Masuk dengan</SheetTitle>
                 <div class="flex items-center justify-center gap-3 my-3">
                     <Button variant="ghost" class="rounded-full h-16 w-16 bg-[#F4FAFF]">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
@@ -73,25 +110,25 @@ import {
                 <hr class="flex-grow border-t border-gray-300">
               </div>
             <div class="grid gap-4 py-4">
-                <div class="grid grid-cols-4 items-center gap-4">
-                    <Input id="name" placeholder="Email" class="col-span-4 h-14 rounded-2xl" />
+                <div class="grid items-center grid-cols-4 gap-4">
+                    <Input id="username" v-model="username" placeholder="Username" class="col-span-4 h-14 rounded-2xl" />
                 </div>
-                <div class="grid grid-cols-4 items-center gap-4">
-                    <Input id="username" placeholder="Kata sandi" class="col-span-4 h-14 rounded-2xl" />
+                <div class="grid items-center grid-cols-4 gap-4">
+                    <Input id="password" type="password" v-model="password" placeholder="Password" class="col-span-4 h-14 rounded-2xl" />
                 </div>
-                <p>Lupa kata sandi?</p>
+                <p>Forgot Password?</p>
             </div>
             <SheetFooter class="">
                 <SheetClose as-child>
-                    <Button class="w-full h-12 rounded-full" type="submit">
-                        Masuk
+                    <Button class="w-full h-12 rounded-full" type="submit" @click="login">
+                        Login
                     </Button>
                 </SheetClose>
             </SheetFooter>
             <SheetFooter class="mt-3">
                 <SheetClose as-child>
                     <Button variant="outline" class="w-full h-12 rounded-full" type="submit">
-                        Mendaftar
+                        Sign Up
                     </Button>
                 </SheetClose>
             </SheetFooter>

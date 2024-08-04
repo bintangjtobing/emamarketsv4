@@ -17,13 +17,13 @@ import {
 <template>
     <Sheet>
         <SheetTrigger as-child>
-            <Button class="rounded-full px-4 py-2 text-white">
+            <Button class="px-4 py-2 text-white rounded-full">
                 Register
             </Button>            
         </SheetTrigger>
         <SheetContent>
             <SheetHeader>
-                <SheetTitle class="text-center text-2xl font-bold">Mendaftar dengan</SheetTitle>
+                <SheetTitle class="text-2xl font-bold text-center">Sign up your account</SheetTitle>
                 <div class="flex items-center justify-center gap-3 my-3">
                     <Button variant="ghost" class="rounded-full h-16 w-16 bg-[#F4FAFF]">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
@@ -69,29 +69,29 @@ import {
             </SheetHeader>
             <div class="flex items-center gap-3">
                 <hr class="flex-grow border-t border-gray-300">
-                <p class="text-lg">atau melalui</p>
+                <p class="text-lg">Or create an account by</p>
                 <hr class="flex-grow border-t border-gray-300">
               </div>
             <div class="grid gap-4 py-4">
-                <div class="grid grid-cols-4 items-center gap-4">
+                <div class="grid items-center grid-cols-4 gap-4">
                     <Input id="name" placeholder="Email" class="col-span-4 h-14 rounded-2xl" />
                 </div>
-                <div class="grid grid-cols-4 items-center gap-4">
+                <div class="grid items-center grid-cols-4 gap-4">
                     <Input id="username" placeholder="Kata sandi" class="col-span-4 h-14 rounded-2xl" />
                 </div>
-                <p>Lupa kata sandi?</p>
+                <p>Forgot password?</p>
             </div>
             <SheetFooter class="">
                 <SheetClose as-child>
                     <Button class="w-full h-12 rounded-full" type="submit">
-                        Masuk
+                        Sign Up
                     </Button>
                 </SheetClose>
             </SheetFooter>
             <SheetFooter class="mt-3">
                 <SheetClose as-child>
                     <Button variant="outline" class="w-full h-12 rounded-full" type="submit">
-                        Mendaftar
+                        Login
                     </Button>
                 </SheetClose>
             </SheetFooter>
