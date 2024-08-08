@@ -7,7 +7,6 @@ import { ref } from 'vue'
 const apiKey = import.meta.env.VITE_API_KEY;
 const endpoint = import.meta.env.VITE_BASE_URL;
 const version = import.meta.env.VITE_VERSION;
-
 const username = ref('');
 const password = ref('');
 const errorMessage = ref('');

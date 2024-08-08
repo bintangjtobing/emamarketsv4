@@ -2,6 +2,7 @@
 import Button from '../../ui/button/Button.vue';
 import Input from '../../ui/input/Input.vue';
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet'
+import dropdownForNumberPhone from '../register/dropdownForNumberPhone.vue';
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, 
         <SheetTrigger as-child>
             <Button class="px-4 py-6 xl:py-2 text-lg xl:text-sm text-white rounded-full">
                 Register
-            </Button>            
+            </Button>
         </SheetTrigger>
         <SheetContent class="w-full xl:w-1/3">
             <SheetHeader>
@@ -61,15 +62,20 @@ import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, 
                 <hr class="flex-grow border-t border-gray-300">
                 <p class="text-lg">Or create an account by</p>
                 <hr class="flex-grow border-t border-gray-300">
-              </div>
+            </div>
             <div class="grid gap-4 py-4">
                 <div class="grid items-center grid-cols-4 gap-4">
-                    <Input id="name" placeholder="Email" class="col-span-4 h-14 rounded-2xl" />
+                    <Input id="first name" placeholder="First name" class="col-span-4 h-14 rounded-2xl" />
                 </div>
                 <div class="grid items-center grid-cols-4 gap-4">
-                    <Input id="username" placeholder="Kata sandi" class="col-span-4 h-14 rounded-2xl" />
+                    <Input id="last name" placeholder="Last name" class="col-span-4 h-14 rounded-2xl" />
                 </div>
-                <p>Forgot password?</p>
+                <div class="grid items-center grid-cols-4 gap-4">
+                    <Input id="email address" placeholder="Email address" class="col-span-4 h-14 rounded-2xl" />
+                </div>
+                <div>
+                    <dropdownForNumberPhone/>
+                </div>
             </div>
             <SheetFooter class="">
                 <SheetClose as-child>

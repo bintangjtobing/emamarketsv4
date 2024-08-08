@@ -22,10 +22,26 @@ const showPanel = ref<Checked>(false);
 
 // Example list of countries with translation keys
 const countries = [
-  { code: 'us', name: t('countries.english'), image: '/images/en.svg' },
-  { code: 'id', name: t('countries.indonesia'), image: '/images/in.svg' },
-  // Add other countries with translations
-];
+    { "code": "us", "name": "ENGLISH", "image": "/images/en.svg" },
+    { "code": "vn", "name": "VIETNAMESE", "image": "/images/vn.svg" },
+    { "code": "za", "name": "ZULU", "image": "/images/zu.svg" },
+    { "code": "sw", "name": "SWAHILI", "image": "/lang/sw.svg" },
+    { "code": "af", "name": "AFRIKAANS", "image": "/images/af.svg" },
+    { "code": "th", "name": "THAI", "image": "/images/th.svg" },
+    { "code": "ur", "name": "URDU", "image": "/lang/ur.svg" },
+    { "code": "in", "name": "HINDI", "image": "/images/hi.svg" },
+    { "code": "ru", "name": "RUSSIAN", "image": "/images/ru.svg" },
+    { "code": "es", "name": "SPANISH", "image": "/images/es.svg" },
+    { "code": "de", "name": "GERMAN", "image": "/images/de.svg" },
+    { "code": "it", "name": "ITALIAN", "image": "/images/it.svg" },
+    { "code": "ar", "name": "ARABIC", "image": "/images/ar.svg" },
+    { "code": "fr", "name": "FRENCH", "image": "/images/fr.svg" },
+    { "code": "pt", "name": "PORTUGUESE", "image": "/images/pt.svg" },
+    { "code": "cn", "name": "CHINESE (SIMPLIFIED)", "image": "/images/cn.svg" },
+    { "code": "cn", "name": "CHINESE (TRADITIONAL)", "image": "/images/zh.svg" },
+    { "code": "kr", "name": "KOREAN", "image": "/images/ko.svg" },
+    { "code": "id", "name": "INDONESIAN", "image": "/images/ind.svg" }
+]
 
 const selectedCountry = ref(countries[0].code.toUpperCase());
 
