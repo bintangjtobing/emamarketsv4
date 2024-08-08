@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../ui/tabs';
 import axios from 'axios';
 
 const activeTab = ref('currencies');
@@ -27,7 +27,6 @@ const fetchExchangeRate = async () => {
     const responses = await Promise.all(requests);
     exchangeRates.value = responses.map(response => {
       const data = response.data['Realtime Currency Exchange Rate'];
-      console.log(response.data['Realtime Currency Exchange Rate']);
       return {
         instrument: data['4. To_Currency Name'],
         bid: parseFloat(data['8. Bid Price']),
@@ -60,8 +59,8 @@ onMounted(() => {
       <TabsContent value="popular">
         Popular content here.
       </TabsContent>
-      <TabsContent value="currencies">
-        <table v-if="exchangeRates.length" class="min-w-full divide-y divide-gray-200">
+      <TabsContent value="currencies" class="overflow-x-auto mt-12 lg:mt-5">
+        <table v-if="exchangeRates.length" class="min-w-full divide-y divide-gray-200 text-sm">
           <thead class="bg-gray-50">
             <tr>
               <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Instruments</th>

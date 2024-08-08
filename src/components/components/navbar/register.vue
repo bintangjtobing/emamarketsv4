@@ -1,27 +1,17 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import {
-    Sheet,
-    SheetClose,
-    SheetContent,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from '@/components/ui/sheet'
+import Button from '../../ui/button/Button.vue';
+import Input from '../../ui/input/Input.vue';
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet'
 </script>
 
 <template>
     <Sheet>
         <SheetTrigger as-child>
-            <Button class="px-4 py-2 text-white rounded-full">
+            <Button class="px-4 py-6 xl:py-2 text-lg xl:text-sm text-white rounded-full">
                 Register
             </Button>            
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent class="w-full xl:w-1/3">
             <SheetHeader>
                 <SheetTitle class="text-2xl font-bold text-center">Sign up your account</SheetTitle>
                 <div class="flex items-center justify-center gap-3 my-3">

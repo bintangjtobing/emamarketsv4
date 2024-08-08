@@ -1,27 +1,19 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import {
-    Sheet,
-    SheetClose,
-    SheetContent,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from '@/components/ui/sheet'
+import Input from '../../ui/input/Input.vue'
+import Button from '../../ui/button/Button.vue'
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet'
 import axios from 'axios'
-import {ref} from 'vue'
+import { ref } from 'vue'
 const apiKey = import.meta.env.VITE_API_KEY;
 const endpoint = import.meta.env.VITE_BASE_URL;
 const version = import.meta.env.VITE_VERSION;
 
 const username = ref('');
 const password = ref('');
+const errorMessage = ref('');
 
 const login = async () => {
+    errorMessage.value = '';
     try {
         const response = await axios.post(
             `${endpoint}/gateway/api/${version}/syntellicore.cfc?method=user_login`, // Use relative path
@@ -38,12 +30,14 @@ const login = async () => {
         )
         if (response.data.success) {
             const token = response.data.data[0].authentication_token;
+            errorMessage.value = '';
             localStorage.setItem('access_token', token);
-            username.value='',
-            password.value=''
+            username.value = '',
+                password.value = ''
             console.log('Authentication token stored:', token);
         } else {
-            console.error('Login failed:', response.data.info.message);
+            errorMessage.value = response.data.info.message;
+            // console.log('Login failed:', response.data.info.message);
         }
     } catch (error) {
         console.error('Example Purpose: API Test login failed', error)
@@ -54,11 +48,13 @@ const login = async () => {
 <template>
     <Sheet>
         <SheetTrigger as-child>
-            <Button variant="ghost" class="rounded-full">
+            <Button variant="ghost"
+                class="rounded-full w-full xl:w-fit py-6 xl:py-0 border xl:border-none text-lg xl:text-sm"
+                @click="errorMessage = ''">
                 Login
             </Button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent class="w-full xl:w-1/3">
             <SheetHeader>
                 <SheetTitle class="text-2xl font-bold text-center">Masuk dengan</SheetTitle>
                 <div class="flex items-center justify-center gap-3 my-3">
@@ -108,22 +104,23 @@ const login = async () => {
                 <hr class="flex-grow border-t border-gray-300">
                 <p class="text-lg">atau melalui</p>
                 <hr class="flex-grow border-t border-gray-300">
-              </div>
+            </div>
             <div class="grid gap-4 py-4">
                 <div class="grid items-center grid-cols-4 gap-4">
-                    <Input id="username" v-model="username" placeholder="Username" class="col-span-4 h-14 rounded-2xl" />
+                    <Input id="username" v-model="username" placeholder="Username"
+                        class="col-span-4 h-14 rounded-2xl" />
                 </div>
                 <div class="grid items-center grid-cols-4 gap-4">
-                    <Input id="password" type="password" v-model="password" placeholder="Password" class="col-span-4 h-14 rounded-2xl" />
+                    <Input id="password" type="password" v-model="password" placeholder="Password"
+                        class="col-span-4 h-14 rounded-2xl" />
                 </div>
+                <p v-if="errorMessage" class="text-red-500">{{ errorMessage }}</p>
                 <p>Forgot Password?</p>
             </div>
             <SheetFooter class="">
-                <SheetClose as-child>
-                    <Button class="w-full h-12 rounded-full" type="submit" @click="login">
-                        Login
-                    </Button>
-                </SheetClose>
+                <Button class="w-full h-12 rounded-full" type="submit" @click="login">
+                    Login
+                </Button>
             </SheetFooter>
             <SheetFooter class="mt-3">
                 <SheetClose as-child>

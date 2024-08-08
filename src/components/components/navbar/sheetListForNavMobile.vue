@@ -45,13 +45,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../ui/accordion';
 import { componentsTraders, componentsCompany, componentsPartner, componentsHelpCenter, componentsEMACenter, Component, ComponentWithList, ComponentWithoutList } from './dataNavbar';
 
 const props = defineProps({

@@ -39,7 +39,8 @@
             <ul class="w-[400px] gap-3">
               <li v-for="(component, index) in componentsPartner.slice(1)" :key="component.title">
                 <NavigationMenuLink as-child>
-                  <a :href="component.url" class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                  <a :href="component.url"
+                    class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                     <div class="text-sm font-medium leading-none">{{ component.title }}</div>
                   </a>
                 </NavigationMenuLink>
@@ -131,6 +132,7 @@
 </template>
 
 <script setup lang="ts">
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -138,7 +140,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger
-} from '@/components/ui/navigation-menu'
+} from '../../ui/navigation-menu';
 
 import {
   componentsTraders,

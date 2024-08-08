@@ -14,13 +14,12 @@ onMounted(() => {
   <section class="xl:p-4 my-2 xl:my-5 ">
     <div class="container max-w-screen-lg mx-auto p-4 text-center ">
       <div class="space-y-3 xl:space-y-5 py-1 xl:py-5">
-        <h1 class="text-3xl xl:text-5xl font-extrabold font-eina-bold leading-10">
-          Experience secure <span class="block mt-1 xl:mt-7">& simplified trading</span>
+        <h1 class="text-3xl xl:text-5xl font-extrabold font-eina-bold leading-10">{{ $t('heading-hero') }}<span class="block mt-1 xl:mt-7">{{ $t('heading-hero-span') }}</span>
         </h1>
         <p class="text-base">
-          Trade with confidence with our platform <span class="block">for secure and transparent trading</span>
+          {{ $t('hero-text') }} <span class="block">{{$t('hero-text-2')}}</span>
         </p>
-        <Button class="rounded-full px-5 py-3 xl:px-10 xl:py-6 text-xs">Open Account</Button>
+        <Button class="rounded-full px-5 py-3 xl:px-10 xl:py-6 text-xs">{{  $t('hero-btn-text')}}</Button>
       </div>
       <div class="">
         <video class="hidden md:block md:w-full w-screen h-auto" autoplay muted>

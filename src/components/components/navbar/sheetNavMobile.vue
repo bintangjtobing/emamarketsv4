@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+import Button from '../../ui/button/Button.vue';
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet'
 import sheetListForNavMobile from './sheetListForNavMobile.vue';
+import login from './login.vue';
+import register from './register.vue';
+import dropdownLangguage from './dropdownLangguage.vue';
 </script>
 
 <template>
@@ -20,7 +19,10 @@ import sheetListForNavMobile from './sheetListForNavMobile.vue';
       </Button>
     </SheetTrigger>
     <SheetContent class="w-full md:w-fit">
-      <ul class="mt-5 space-y-3 text-lg">
+      <div class="absolute top-1 left-2">
+        <dropdownLangguage/>
+      </div>
+      <ul class="mt-8 space-y-3 text-lg">
         <li class="">
           <sheetListForNavMobile title="Traders"/>
         </li>
@@ -40,6 +42,10 @@ import sheetListForNavMobile from './sheetListForNavMobile.vue';
           <sheetListForNavMobile title="Help center"/>
         </li>
       </ul>
+      <div class="absolute bottom-10 w-full flex flex-col gap-3 left-0 px-10">
+       <login/>
+       <register/>
+      </div>
     </SheetContent>
   </Sheet>
 </template>
