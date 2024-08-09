@@ -7,7 +7,12 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Button from '@/components/ui/button/Button.vue';
 import { ref } from 'vue';
-
+interface Country {
+  name: string;
+  code: string;
+  displayName: string;
+  image: string;
+}
 const countries = [
     { "code": "+62", "name": "ID", "displayName": "INDONESIAN", "image": "/images/ind.svg" },
     { "code": "+1", "name": "US", "displayName": "ENGLISH", "image": "/images/en.svg" },
@@ -29,39 +34,50 @@ const countries = [
     { "code": "+852", "name": "HK", "displayName": "CHINESE (TRADITIONAL)", "image": "/images/zh.svg" },
     { "code": "+82", "name": "KR", "displayName": "KOREAN", "image": "/images/ko.svg" },
 ];
-
+const selectedCountry = ref<Country | null>(null);
 // State for the selected country
-const selectedCountry = ref(countries[0]);
-
-console.log(countries[0]);
-
-
-function selectCountry(country: { code: string; name: string; displayName: string; image: string }) {
+function selectCountry(country: Country) {
+    console.log('Selected country:', country);
     selectedCountry.value = country;
-    console.log('Selected country:', selectedCountry.value.code);
 }
 </script>
 
 <template>
-        <DropdownMenu>
-            <DropdownMenuTrigger>
-                <Button class="space-x-2" variant="ghost">
-                    <img :src="`https://flagsapi.com/${selectedCountry.value?.name ?? 'ID'}/flat/24.png`" alt="Flag" />
-                    <span>{{ selectedCountry.value?.code ?? '+62'}}</span>
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-                <DropdownMenuItem
-                    v-for="country in countries"
-                    :key="country.code"
-                    @click="selectCountry(country)"
-                >
-                    <img :src="`https://flagsapi.com/${country?.name ?? ''}/flat/24.png`" alt="Flag" class="w-5 h-5 mr-2" />
-                    <span>{{ country.displayName }}</span>
-                    <span class="ml-auto">{{ country.code }}</span>
-                </DropdownMenuItem>
-            </DropdownMenuContent>
-        </DropdownMenu>
-</template>
-
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Button class="space-x-2" variant="ghost">
+          <img :src="`https://flagsapi.com/${selectedCountry?.name ?? 'ID' }/flat/24.png`" alt="Flag" />
+          <span>{{ selectedCountry?.code ?? '+62' }}</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem
+          v-for="country in countries"
+          :key="country.code"
+          @click="selectCountry(country)"
+        >
+          <img :src="`https://flagsapi.com/${country.name ?? ''}/flat/24.png`" alt="Flag" class="w-5 h-5 mr-2" />
+          <span>{{ country.displayName }}</span>
+          <span class="ml-auto">{{ country.code }}</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </template>
+  <style scoped>
+  /* Styling for the telephone number input */
+  .tel-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Ensure dropdown menu is positioned correctly */
+  .dropdown-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Adjust width as needed */
+  }
+  </style>
 
