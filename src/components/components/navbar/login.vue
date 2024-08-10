@@ -2,46 +2,9 @@
 import Input from '../../ui/input/Input.vue'
 import Button from '../../ui/button/Button.vue'
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet'
-import axios from 'axios'
-import { ref } from 'vue'
-const apiKey = import.meta.env.VITE_API_KEY;
-const endpoint = import.meta.env.VITE_BASE_URL;
-const version = import.meta.env.VITE_VERSION;
-const username = ref('');
-const password = ref('');
-const errorMessage = ref('');
+import { useLogin } from '../login/useLogin';
 
-const login = async () => {
-    errorMessage.value = '';
-    try {
-        const response = await axios.post(
-            `${endpoint}/gateway/api/${version}/syntellicore.cfc?method=user_login`, // Use relative path
-            new URLSearchParams({
-                login: username.value,
-                password: password.value
-            }),
-            {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'api_key': apiKey
-                }
-            }
-        )
-        if (response.data.success) {
-            const token = response.data.data[0].authentication_token;
-            errorMessage.value = '';
-            localStorage.setItem('access_token', token);
-            username.value = '',
-                password.value = ''
-            console.log('Authentication token stored:', token);
-        } else {
-            errorMessage.value = response.data.info.message;
-            // console.log('Login failed:', response.data.info.message);
-        }
-    } catch (error) {
-        console.error('Example Purpose: API Test login failed', error)
-    }
-}
+const {username, password, errorMessage, login} = useLogin()
 </script>
 
 <template>

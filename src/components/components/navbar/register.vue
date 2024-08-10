@@ -3,6 +3,9 @@ import Button from '../../ui/button/Button.vue';
 import Input from '../../ui/input/Input.vue';
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '../../ui/sheet'
 import dropdownForNumberPhone from '../register/dropdownForNumberPhone.vue';
+import { useRegister } from '../register/useRegister';
+
+const {register} = useRegister()
 </script>
 
 <template>
@@ -74,15 +77,20 @@ import dropdownForNumberPhone from '../register/dropdownForNumberPhone.vue';
                     <Input id="email address" placeholder="Email address" class="col-span-4 h-14 rounded-2xl" />
                 </div>
                 <div>
-                    <dropdownForNumberPhone/>
+                    <div class="flex items-center border rounded-2xl">
+                        <dropdownForNumberPhone />
+                        <Input style="border-color: inherit; -webkit-box-shadow: none; box-shadow: none;" id="number phone" placeholder="Number phone"
+                            class="col-span-4 h-14 rounded-2xl border-none focus:outline-none focus:ring-0" />
+
+                    </div>
                 </div>
             </div>
             <SheetFooter class="">
-                <SheetClose as-child>
-                    <Button class="w-full h-12 rounded-full" type="submit">
+                <!-- <SheetClose as-child> -->
+                    <Button class="w-full h-12 rounded-full" type="submit"  @click="register" >
                         Sign Up
                     </Button>
-                </SheetClose>
+                <!-- </SheetClose> -->
             </SheetFooter>
             <SheetFooter class="mt-3">
                 <SheetClose as-child>
