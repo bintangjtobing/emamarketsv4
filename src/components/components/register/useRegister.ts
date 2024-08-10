@@ -10,6 +10,7 @@ export function useRegister() {
   const { username, password, errorMessage, authToken, login } = useLogin();
 
   const accesToken = ref(localStorage.getItem("access_token") || "");
+  const userLogin = ref(localStorage.getItem("userLogin") || "");
   const countryCode = ref("");
   const countryId = ref("");
   const passwordRef = ref("");
@@ -25,7 +26,7 @@ export function useRegister() {
 
   const getCountryId = async () => {
     try {
-      const response = await axios.post(getCountryUrl, null, {
+      const response = await axios.post(getCountryUrl, countryCode, {
         headers: {
           "Content-Type": "application/json",
           api_key: "5C9F6D90-5A83-4ECA-8741-8E09627AE5F2", // If the API requires an API key
@@ -44,7 +45,7 @@ export function useRegister() {
 
   function generateRandomPassword(length: number): string {
     const charset =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#";
     let password = "";
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * charset.length);
@@ -65,9 +66,9 @@ export function useRegister() {
       const response = await axios.post(
         loginLead,
         new URLSearchParams({
+          login: userLogin.value,
+          access_token: accesToken.value,
           on_submit: "AUTO_LOGIN",
-          login: "bintang.tobing",
-          access_token: accesToken.value && accesToken.value,
           verify: "0",
           account: "1",
           create_company: "0",
@@ -84,16 +85,26 @@ export function useRegister() {
           sidc: "",
           httpref: "",
           auto_responder: "",
+          // For Marketing Tracking Ads
+          utm_source: "",
+          utm_medium: "",
+          utm_campaign: "",
+          utm_term: "",
+          utm_content:"",
+          utm_device: "",
+          utm_creative: "",
+          utm_network: "",
+          // end
           emailInstantNotification: "PROFILECREATED",
           lead_method: "SIGNUP",
           targetval: "_self",
           tc_confirmed: "1",
           client_agreement: "1",
           country_id: countryId.value,
-          fname: "bahari",
-          lname: "test",
-          email: "baharihari@gmail.com",
-          tel_number: "+6283145537564",
+          fname: "Bintang",
+          lname: "TEST",
+          email: "bintang.testV4Markets@gmail.com",
+          tel_number: "83145537564",
         })
       );
     } catch (error) {

@@ -3,8 +3,8 @@ import axios from 'axios'
 
 export function useLogin() {
     const apiKey = import.meta.env.VITE_API_KEY;
-    const endpoint = import.meta.env.VITE_BASE_URL;
-    const version = import.meta.env.VITE_VERSION;
+    const endpoint = import.meta.env.VITE_BASE_URL_LOGIN;
+    const version = import.meta.env.VITE_BASE_LOGIN_VERSION;
     const username = ref('');
     const password = ref('');
     const errorMessage = ref('');
@@ -14,7 +14,7 @@ export function useLogin() {
         errorMessage.value = '';
         try {
             const response = await axios.post(
-                `${endpoint}/gateway/api/${version}/syntellicore.cfc?method=user_login`,
+                `${endpoint}`,
                 new URLSearchParams({
                     login: username.value,
                     password: password.value
@@ -27,10 +27,13 @@ export function useLogin() {
                 }
             )
             if (response.data.success) {
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('userLogin');
                 const token = response.data.data[0].authentication_token;
                 authToken.value = response.data.data[0].authentication_token;
                 errorMessage.value = '';
                 localStorage.setItem('access_token', token);
+                localStorage.setItem('userLogin', username.value);
                 username.value = '';
                 password.value = '';
             } else {
